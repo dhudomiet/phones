@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="phones.DOs.Users" catalog="phones" table="users">
+		<id name="idUser" type="java.lang.Integer">
+			<column name="id_user" not-null="true"></column>
+			<generator class="identity"></generator>
+		</id>
+		<property name="userFirstName" type="string">
+			<column name="user_firstname" not-null="true" length="20"></column>
+		</property>
+		<property name="userLastName" type="string">
+			<column name="user_lastname" not-null="true" length="40"></column>
+		</property>
+		<set name="phones" table="users_numbers" inverse="false" lazy="true"
+			fetch="select" cascade="all">
+			<key>
+				<column name="id_user" not-null="true"></column>
+			</key>
+			<many-to-many entity-name="phones.DOs.Phones">
+				<column name="id_phone" not-null="true"></column>
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
