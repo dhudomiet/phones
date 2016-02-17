@@ -5,9 +5,13 @@
         <meta name="viewport" charset="UTF-8" content="width = device-width, initial-scale = 1.0">
         <script type="text/javascript" src="resources/javascripts/jquery/jquery-2.2.0.min.js"></script>
         <script type="text/javascript" src="resources/javascripts/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="resources/javascripts/angular/angular.min.js"></script>
+        <script type="text/javascript" src="resources/javascripts/angular/angular.min.js"></script>  
+        <script type="text/javascript" src="resources/javascripts/angular/angular-route.min.js"></script>
         <script type="text/javascript" src="resources/javascripts/phones/phones.js"></script>
+        <script type="text/javascript" src="resources/javascripts/phones/phonesDirectives.js"></script>
+        <script type="text/javascript" src="resources/javascripts/phones/phonesServices.js"></script>
         <script type="text/javascript" src="resources/javascripts/phones/phonesController.js"></script>
+        
         
     </head>
     <body ng-app="phones" ng-controller="PhonesController">
@@ -17,7 +21,7 @@
                     <small><h1 class="text-center">To jest internetowa książka telefoniczna {{phones.name}}</h1></small>
                 </div>
             </div>
-            <div class="row" ng-include="'filterForm.html'"></div>
+            <div class="row" ng-view></div>
             <div class="row">
                 <div class="col-lg-12" style="border-style: solid; border-width: 0px 1px 1px 1px;">
                     <div class="col-lg-5">
@@ -30,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="user in users | filter: us.firstName | filter: us.lastName | filter: us.phone | orderBy: 'phone'">
+                            <tr ng-repeat="user in users">
                                 <td>{{user.firstName}}</td>
                                 <td>{{user.lastName}}</td>
                                 <td >

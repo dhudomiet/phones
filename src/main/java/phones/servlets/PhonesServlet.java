@@ -43,9 +43,11 @@ public class PhonesServlet extends HttpServlet {
 		System.out.println(users.size());
 		String output = JSONParser.toJSONArray(users);
 		System.out.println(output);
-		response.setContentType("text/html");
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println(output);
+		out.flush();
 	}
 
 	/**
