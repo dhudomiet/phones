@@ -9,4 +9,6 @@ public interface DataService {
 	public List<Users> getUsersByFirstName(String firstName);
 	public List<Users> getUsersByLastName(String lastName);
 	public Users getUserbyFullData(String firstName, String lastName);
+	public String saveNewUser(String json);
+	public String deleteUser(Integer idUser,Integer idPhone);
 }

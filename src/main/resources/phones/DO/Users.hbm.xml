@@ -9,10 +9,10 @@
 			<generator class="identity"></generator>
 		</id>
 		<property name="userFirstName" type="string">
-			<column name="user_firstname" not-null="true" length="20"></column>
+			<column name="user_firstname" not-null="false" length="20"></column>
 		</property>
 		<property name="userLastName" type="string">
-			<column name="user_lastname" not-null="true" length="40"></column>
+			<column name="user_lastname" not-null="false" length="40"></column>
 		</property>
 		<set name="phones" table="users_numbers" inverse="false" lazy="true"
 			fetch="select" cascade="all">
@@ -20,7 +20,7 @@
 				<column name="id_user" not-null="true"></column>
 			</key>
 			<many-to-many entity-name="phones.DOs.Phones">
-				<column name="id_phone" not-null="true"></column>
+				<column name="id_phone" not-null="false"></column>
 			</many-to-many>
 		</set>
 	</class>

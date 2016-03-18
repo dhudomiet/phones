@@ -6,12 +6,12 @@
 	<class name="phones.DOs.Phones" table="phones" catalog="phones">
 		<id name="idPhone" type="java.lang.Integer">
 			<column name="id_phone" not-null="true"></column>
+			<generator class="identity"></generator>
 		</id>
 		<property name="phoneNumber" type="string">
-			<column name="phone_number" not-null="true" length="12"></column>
+			<column name="phone_number" not-null="false" length="12"></column>
 		</property>
-		<set name="users" table="users_numbers" inverse="false" lazy="true"
-			fetch="select">
+		<set name="users" table="users_numbers" inverse="true" lazy="true" fetch="select">
 			<key>
 				<column name="id_phones" not-null="true"></column>
 			</key>

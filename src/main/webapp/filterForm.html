@@ -6,24 +6,30 @@
                             	<input class="form-control" type="text" id="firstName" ng-model="us.firstName" placeholder="podaj imię">
                             </div>
                             <div class="col-md-6">
-                            	<span style="font-size: 14pt; color:red" ng-show="firstname">This field is incorrect filled</span>
+                            	<span style="font-size: 14pt; color:red" ng-show="firstname">incorrect data</span>
                             </div>   
                         </div>
-                         <div class="form-group">
+                         <div class="form-group" show-error="lastname">
                             <label for="lastName" class="col-sm-1">Nazwisko:</label>
-                            <div class="col-sm-3">
+                            <div class="col-md-3">
                                 <input type="text" id="lasttName" ng-model="us.lastName" class="form-control" placeholder="podaj nazwisko">
                             </div>
+                             <div class="col-md-6">
+                            	<span style="font-size: 14pt; color:red" ng-show="lastname">incorrect data</span>
+                            </div>   
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" show-error="number">
                             <label for="phone" class="col-sm-1">Numer telefonu</label>
                             <div class="col-sm-3">
                                 <input type="text" id="phone" ng-model="us.phone" class="form-control" placeholder="podaj number telefonu">
                             </div>
+                            <div class="col-md-6">
+                            	<span style="font-size: 14pt; color:red" ng-show="lastname">incorrect data</span>
+                            </div>  
                         </div>
                         <div class="form-group">
                             <div class="col-sm-5">
-                                <input type="submit" ng-click="addUser(us.firstName,us.lastName,us.number)" class="btn btn-primary" value="dodaj numer telefonu">
+                                <input type="submit" ng-click="addUser(us)" class="btn btn-primary" value="dodaj numer telefonu">
                                 <input type="button" class="btn btn-primary" ng-click="reset()" value="reset">
                             </div>
                         </div>

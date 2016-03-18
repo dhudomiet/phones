@@ -11,6 +11,7 @@
         <script type="text/javascript" src="resources/javascripts/phones/phonesDirectives.js"></script>
         <script type="text/javascript" src="resources/javascripts/phones/phonesServices.js"></script>
         <script type="text/javascript" src="resources/javascripts/phones/phonesController.js"></script>
+        <script type="text/javascript" src="resources/javascripts/phones/phonesFilters.js"></script>
         
         
     </head>
@@ -31,21 +32,40 @@
                                 <th>Imię</th>
                                 <th>Nazwisko</th>
                                 <th>Telefon</th>
+                                <th>Akcje</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="user in users">
+                            <tr ng-repeat="user in users | offset: currentPage*itemsPerPage | limitTo: itemsPerPage">
                                 <td>{{user.firstName}}</td>
                                 <td>{{user.lastName}}</td>
                                 <td >
                                 	<table>
                                 	 <tr ng-repeat="phone in user.phones">
-                                	 	<td>{{phone}}<td>
+                                	 	<td>{{phone.number}}<td>
                                 	 </tr>
                                 	</table>	
                                 </td>
+                                <td><a ng-click="deleteUser($index)"><img src="resources/images/deleteIcon.png"></a></td>
                             </tr>
                         </tbody>
+                        <tfoot>
+                        	<td colspan="3">
+                        		<div class="pagination">
+                        			<ul>
+                        				<li ng-class="prevPageDisabled()">
+                        					<a href ng-click="prevPage()">Prev</a>
+                        				</li>
+                        				<li ng-repeat="n in pageCount()" ng-class="active : n===currentPage" ng-click="setPage(n)">
+                        					<a href="#">{{n+1}}</a>
+                        				</li>
+                        				<li ng-class="nextPageDisabled()" >
+                        					<a href ng-click="nextPage()">Next</a>
+                        				</li>
+                        			</ul>
+                        		</div>
+                        	</td>
+                        </tfoot>
                         </table> 
                     </div>                          
                 </div>
